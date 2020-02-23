@@ -2,6 +2,23 @@
 
 module.exports = {
 
+  // development: {
+  //   client: 'pg',
+  //   connection: {
+  //     database: 'storedemo',
+  //     port: 5432,
+  //     user: process.env.POSTGRES_USERNAME,
+  //     password: process.env.POSTGRES_PASSWORD
+  //   },
+  //   migrations: {
+  //     directory: './data/migrations',
+  //     tableName: 'shop'
+  //   },
+  //   seeds: {
+  //     directory: './data/seeds'
+  //   },
+  //   useNullAsDefault: true
+  // } ,
   development: {
     client: 'sqlite3',
     connection: {
