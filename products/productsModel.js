@@ -1,6 +1,7 @@
 module.exports = {
     getAll,
     addProduct,
+    addToCats,
     getById,
     update,
     remove
@@ -18,6 +19,15 @@ function getById (id) {
 
 function addProduct(product){
     return db('products').insert(product);
+}
+
+function addToCats(product, catid){
+    const pc = {
+        product_id: product,
+        category_id: catid
+    }
+    console.log(pc);
+    return db('product_categories').insert(pc);
 }
 
 function update(product, id){

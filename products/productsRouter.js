@@ -1,5 +1,6 @@
 const express = require('express');
 const Products = require('./productsModel');
+const PC = require('../product_categories/productCategoriesModel')
 const router = express.Router();
 
 
@@ -22,9 +23,13 @@ router.get('/:id', validateProductId, (req, res)=>{
         })
 })
 
-router.post('/', validateProduct, (req, res)=>{
-    Products.addProduct(req.body)
-        .then(product => res.status(201).json(product))
+//add must have product, and category id
+router.post('/:id', validateProduct, (req, res)=>{
+    Products.addProduct(req.body, req.params.id)
+        .then(product => {
+            Products.addToCats(product[0], req.params.id)
+            res.status(201).json(product)
+        })
         .catch(err=>{
             console.log(err);
             res.status(500).json({message: err.message})
